@@ -43,11 +43,6 @@ void NodeList::displayNode(){
     }
 }
 
-
-Node* NodeList::getHead(){
-    return head;
-}
-
 void NodeList::insertNode(int key){
     /* inserts node at the end */
     Node* currNode = new Node;
