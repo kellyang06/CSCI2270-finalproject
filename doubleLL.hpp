@@ -16,7 +16,6 @@ private:
 public:
     NodeList();
     ~NodeList();
-    Node* getHead();
     void insertNode(int key);
     Node* searchNode(int key);
     void displayNode();
