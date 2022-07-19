@@ -21,12 +21,6 @@ HashTable::HashTable(int bsize){
 
 bool HashTable::insertItem(int key){
     int i = 1;
-    // use circular array for collision resolution?
-    if (tableSize == TABLESIZE){
-        for (int j = 0; j < TABLESIZE * 2; j ++){
-            table[i % TABLESIZE];
-        }
-    }
 
     // first hash function
     int oneIndex = hashFunction(key);
@@ -38,9 +32,14 @@ bool HashTable::insertItem(int key){
         // use second hash function to resolve collision
         int twoIndex = hashFunctionDH(key);
         //combined hashing for a key x at i-th probe
-        while (true){
+        for (int k = 0; k < TABLESIZE; k ++){
             // double_hashing(x) = (h(x) + i x h2(x)) % m
             int doubleHashing = (oneIndex + (i * twoIndex)) % TABLESIZE;
+            // check that doubleHashing is in table bounds
+            // if not, use circular array
+            if (doubleHashing >= TABLESIZE){
+                doubleHashing = doubleHashing % TABLESIZE;
+            }
             // if the spot is empty, then set the index equal to it
             if (table[doubleHashing] == -1){
                 table[doubleHashing] = key;
@@ -64,7 +63,7 @@ unsigned int HashTable::hashFunction(int key){
 unsigned int HashTable::hashFunctionDH(int key){
     // secondary hash function to resolve collisions
     // use h2(x) = R - (x % R), where R is a prime number below 10000
-    return (9973) - (key % 9973);
+    return (7253) - (key % 7253);
 }
 
 void HashTable::printTable(){
