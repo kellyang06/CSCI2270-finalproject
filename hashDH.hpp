@@ -9,7 +9,7 @@ using namespace std;
 
 class HashTable
 {
-    int tableSize;  // No. of buckets (linked lists)
+    int tableSize;  // No. of buckets
 
     // Pointer to an array containing buckets
     int *table;
