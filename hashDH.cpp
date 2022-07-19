@@ -29,6 +29,8 @@ bool HashTable::insertItem(int key){
         table[oneIndex] = key;
     } else {
         // otherwise, if that spot is taken and there's a collision, then...
+        // increment number of collisions
+        numOfcollision ++;
         // use second hash function to resolve collision
         int twoIndex = hashFunctionDH(key);
         //combined hashing for a key x at i-th probe
@@ -48,7 +50,6 @@ bool HashTable::insertItem(int key){
             i ++;
             return true; 
         }
-        numOfcollision ++;
     }
     tableSize ++;
     return false;
@@ -83,6 +84,10 @@ int HashTable::searchItem(int key){
     int indexOne = hashFunction(key);
     // determine how much the index is incremented by
     int indexIncrement = hashFunctionDH(key);
+    // if there is already an element at that spot, then there was a collision so increment numOfCollision
+    if (table[indexOne] != -1){
+        numOfcollision ++;
+    }
     // traverse through until key is found
     while (table[indexOne] != -1){
         // if key is found, then return
@@ -92,8 +97,6 @@ int HashTable::searchItem(int key){
         // keep incrementing to find the key
         indexOne = indexOne + indexIncrement; 
         indexOne = indexOne % tableSize;
-        // increase number of collisions
-        numOfcollision ++;
     }
     return -1;
 }
