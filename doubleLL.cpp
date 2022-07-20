@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// doubly linked list
+
 NodeList::NodeList(){
     /* constructor */
     head = NULL; 
