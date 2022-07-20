@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// driver file for hash tables double hashing
+/* driver for hashDH */
 
 int main(){
     // Read in the data from CSV file
@@ -47,7 +47,7 @@ int main(){
         auto start = chrono::steady_clock::now();
         // store number of collisions before inserting anything
         collisionsBeforeInsert[i] = hashTable.getNumOfCollision();
-        // Insert 200 elems into hash table (with for loop, call insertItem)
+        // Insert 200 elems into hash table (with for loop, call insertNode)
         for (int j = 0; j < 200; j ++){
             insertIndex = (i * 200) + j;
             hashTable.insertItem(intArr[insertIndex]);
@@ -70,7 +70,7 @@ int main(){
         start = chrono::steady_clock::now();
         // store number of collisions before searching anything
         collisionsBeforeSearch[i] = hashTable.getNumOfCollision();
-        // Search 200 times (iterate through pseudo-random number array and find in table with searchItem)
+        // Search 200 times (iterate through pseudo-random number array and find in table with searchNode)
         for (int m = 0; m < 200; m ++){
             hashTable.searchItem(randomArr[m]);
         }
