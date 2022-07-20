@@ -10,42 +10,38 @@
 using namespace std;
 
 HashTable::HashTable(int bsize){
-    /////////////////////-------------///////////////////
-    /*for (int i = 0; i < bsize; i ++){
-        table[i] = new BST;
-        table[i].getRoot() = NULL;
-    }*/
-
 
     // allocate table of bsize for BST
     table = new BST[bsize];
     //set current tableSize to 0
     tableSize = 0;
     // set roots of each binary tree to NULL
-    // ?????????????????????
-    /*for (int i = 0; i < bsize; i ++){
-        table[i] = -1;
-    }*/
+    for (int i = 0; i < bsize; i ++){
+        Node* _root = table[i].getRoot();
+        _root = NULL;
+
+    }
+}
+
+HashTable::~HashTable(){
+    delete[] table; // free up allocated memory using delete
 }
 
 bool HashTable::insertItem(int key){
     // first hash function
-    // use binary tree at that index and create item to insert into BST
-    // if there is no BST at that index, then make the new item the root
-        // increase the table size
-            // increase number of collisions because a second item hashed to the same place
-    // check if the item is already in the BST using the searchkey from BST implementation
-        // if the key isn't there, then add node to the BST using the addnode from BST implementation
-        // otherwise, return and don't do anything
     int indexOne = hashFunction(key);
+    // if there is already a BST pre existing at that index, increase number of collisions
     if (table[indexOne].getRoot() != NULL){
         numOfcollision ++;
     }
+    // check if the item is already in the BST using the searchkey from BST implementation
     if (table[indexOne].searchKey(key) == false){
+        // if the key isn't there, then add node to the BST using the addnode from BST implementation
         table[indexOne].addNode(key);
         tableSize ++;
         return true;
     } else {
+        // otherwise, return and don't do anything
         return false;
     }
 }
@@ -80,8 +76,3 @@ Node* HashTable::searchItem(int key){
     table[indexOne].searchKey(key);
     return NULL;
 }
-
-// finish constructor
-// get num of collisions
-    // check if a BST is already preexisting somehow
-// test code
