@@ -19,6 +19,10 @@ HashTable::HashTable(int bsize){
     }
 }
 
+HashTable::~HashTable(){
+    delete[] table;
+}
+
 bool HashTable::insertItem(int key){
     int i = 1;
 
