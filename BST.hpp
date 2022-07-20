@@ -22,12 +22,12 @@ class BST{
 
 
     public:
-
+        BST();
+        ~BST();
+        Node* getRoot();
         void addNode(int);              // function to insert a node in the tree.
         bool searchKey(int);            // function to search a data in the tree
         void printTree();               //function to print the tree
-        BST();
-
         void print2DUtil(int);
     
 };
