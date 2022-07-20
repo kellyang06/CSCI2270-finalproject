@@ -10,7 +10,7 @@ using namespace std;
 
 class HashTable
 {
-    int tableSize;  // No. of buckets (linked lists)
+    int tableSize;  
 
     // Pointer to an array containing buckets
     BST *table;
@@ -18,6 +18,7 @@ class HashTable
 
 public:
     HashTable(int bsize);  // Constructor
+    ~HashTable(); // Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);
