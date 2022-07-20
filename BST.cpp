@@ -5,8 +5,7 @@
 using namespace std;
 
 /* constructor */
-BST::BST()
-{
+BST::BST(){
 
 }
 
@@ -111,7 +110,6 @@ void BST:: printTreeHelper(Node* currNode){
  void BST::addNode(int data)
 {
     root = addNodeHelper(root, data);
-    cout<<data<<" has been added"<<endl;
 }
 
 // search for a node
@@ -120,7 +118,6 @@ bool BST::searchKey(int key){
     if(tree != NULL) {
         return true;
     }
-    cout<<"Key not present in the tree"<<endl;
     return false;
 }
 
@@ -134,4 +131,8 @@ void BST::printTree(){
 void BST::print2DUtil(int space)
 {
   print2DUtilHelper(root, space);
+}
+
+Node* BST::getRoot(){
+    return root;
 }
