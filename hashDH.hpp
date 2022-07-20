@@ -17,6 +17,7 @@ class HashTable
 
 public:
     HashTable(int bsize);  // Constructor
+    ~HashTable(); // Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);
