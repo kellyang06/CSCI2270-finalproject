@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <thread>
 #include <cstdlib>
-#include "hashDH.hpp"
+#include "hashBST.hpp"
 
 using namespace std;
 
